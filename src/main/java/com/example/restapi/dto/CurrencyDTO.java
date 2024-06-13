@@ -7,7 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 @Data
 public class CurrencyDTO {
-
     String code;
     String fullName;
     String sign;
