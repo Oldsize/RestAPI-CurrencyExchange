@@ -2,6 +2,7 @@ package com.example.restapi.servlets;
 
 import com.example.restapi.dao.CurrencyDAO;
 import com.example.restapi.exceptions.DatabaseNotFoundException;
+import com.example.restapi.mapper.StringMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import jakarta.servlet.ServletException;
@@ -10,7 +11,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.SneakyThrows;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -28,6 +28,7 @@ public class AllCurrenciesServlet extends HttpServlet {
         CurrencyDAO currenciesDAO = CurrencyDAO.getInstance();
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        StringMapper stringMapper = new StringMapper();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<Map<String, String>> jsonList = new ArrayList<>();
         try {
@@ -46,10 +47,14 @@ public class AllCurrenciesServlet extends HttpServlet {
                 }
             });
         } catch (SQLException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error accessing database");
+            String message = "Ошибка запроса к базе данных.";
+            out.print(stringMapper.mapFromStringtoJSON(message));
+            response.setStatus(404);
             return;
         } catch (DatabaseNotFoundException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
+            String message = "Ошибка подкючения к базе данных.";
+            out.print(stringMapper.mapFromStringtoJSON(message));
+            response.setStatus(404);
         }
         String jsonString = gson.toJson(jsonList);
         out.print(jsonString);
