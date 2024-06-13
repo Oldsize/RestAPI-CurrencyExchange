@@ -4,6 +4,7 @@ import com.example.restapi.dao.CurrencyDAO;
 import com.example.restapi.dao.CurrencyExchangeDAO;
 import com.example.restapi.exceptions.DAOException;
 import com.example.restapi.exceptions.DatabaseNotFoundException;
+import com.example.restapi.mapper.StringMapper;
 import com.example.restapi.model.Currency;
 import com.example.restapi.model.ExchangeRate;
 import com.google.gson.Gson;
@@ -13,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.SneakyThrows;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -23,6 +25,7 @@ import java.util.List;
 @WebServlet(name = "allExchanges", value = "/exchanges")
 public class AllExchangesServlet extends HttpServlet {
 
+    @SneakyThrows
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
         CurrencyExchangeDAO currencyExchangeDAO = CurrencyExchangeDAO.getInstance();
@@ -31,6 +34,7 @@ public class AllExchangesServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         CurrencyDAO currencyDAO = CurrencyDAO.getInstance();
+        StringMapper stringMapper = new StringMapper();
         List<ExchangeRate> jsonList = new ArrayList<>();
         try {
             currencyExchangeDAO.getAllExchangesQuery(resultSet -> {
@@ -52,7 +56,9 @@ public class AllExchangesServlet extends HttpServlet {
                 }
             });
         } catch (DAOException | SQLException | DatabaseNotFoundException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
+            String message = "Error processing request";
+            out.print(stringMapper.mapFromStringtoJSON(message));
+            response.setStatus(500);
         }
         String jsonString = gson.toJson(jsonList);
         out.print(jsonString);
