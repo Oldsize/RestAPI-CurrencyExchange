@@ -9,7 +9,6 @@ import com.google.gson.GsonBuilder;
 public class CurrencyMapper {
     private Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-
     public String mapFromDTOtoJSON(CurrencyDTO currencyModel) throws MappingException {
         try {
             return gson.toJson(currencyModel);
@@ -17,7 +16,6 @@ public class CurrencyMapper {
             throw new MappingException();
         }
     }
-
     public String mapFromModeltoJSON(Currency currencyModel) throws MappingException {
         try {
             return gson.toJson(currencyModel);
