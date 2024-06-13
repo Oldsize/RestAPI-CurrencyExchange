@@ -3,7 +3,6 @@ package com.example.restapi.model;
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-
 import java.math.BigDecimal;
 
 public class ExchangeRate {
