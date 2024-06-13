@@ -1,7 +1,6 @@
 package com.example.restapi.model;
 
 import com.google.gson.annotations.SerializedName;
-
 import java.math.BigDecimal;
 
 public class Exchange {
