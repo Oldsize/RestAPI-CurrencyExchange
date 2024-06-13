@@ -1,12 +1,12 @@
 package com.example.restapi.dao;
 
-import com.example.restapi.exceptions.CurrencyNotFoundException;
 import com.example.restapi.exceptions.DAOException;
 import com.example.restapi.exceptions.DatabaseNotFoundException;
 import com.example.restapi.dto.CurrencyDTO;
 import com.example.restapi.model.Currency;
 import com.example.restapi.utils.ConnectionManager;
 import com.example.restapi.utils.PreparedRequestsSQL;
+
 import java.sql.*;
 import java.util.function.Consumer;
 
@@ -32,7 +32,7 @@ public class CurrencyDAO {
 
     PreparedRequestsSQL preparedRequestsSQL = new PreparedRequestsSQL();
 
-    public Currency getCurrencyByCodeQuery(String code) throws SQLException, DatabaseNotFoundException, CurrencyNotFoundException, DAOException {
+    public Currency getCurrencyByCodeQuery(String code) throws SQLException, DatabaseNotFoundException, DAOException {
         String sql = preparedRequestsSQL.getSELECT_CURRENCY_BY_CODE_SQL();
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -61,6 +61,22 @@ public class CurrencyDAO {
         }
     }
 
+    public String getCurrencyIdByCodeQuery(String code) throws DAOException, SQLException, DatabaseNotFoundException {
+        if (code == null || code.isEmpty()) {
+            throw new IllegalArgumentException("Code cannot be null or empty");
+        } else if (!code.matches("^[A-Za-z]{3}$")) {
+            throw new IllegalArgumentException("Code contains invalid characters");
+        } else {
+            try (Connection connection = connectionManager.getConnection();
+                 PreparedStatement preparedStatement = connection.prepareStatement(preparedRequestsSQL.getSELECT_ID_BY_CODE_SQL())) {
+                preparedStatement.setString(1, code);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                String currencyId = resultSet.getString("ID");
+                return currencyId;
+            }
+        }
+    }
+
     public void executeUpdate(String query) throws SQLException, DAOException, DatabaseNotFoundException {
         try (Connection connection = connectionManager.getConnection();
              Statement statement = connection.createStatement()) {
@@ -85,7 +101,7 @@ public class CurrencyDAO {
             currency.setSign(currencyResultSet.getString("Sign"));
             return currency;
         } catch (SQLException e) {
-        throw new DAOException();
+            throw new DAOException();
         }
     }
 
