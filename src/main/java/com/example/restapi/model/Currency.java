@@ -2,6 +2,7 @@ package com.example.restapi.model;
 
 import com.google.gson.annotations.SerializedName;
 import jakarta.validation.constraints.NotNull;
+
 public class Currency {
     @SerializedName("id")
     private Long id;
