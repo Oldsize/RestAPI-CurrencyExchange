@@ -32,8 +32,7 @@ public class AddCurrencyServlet extends HttpServlet {
             resp.setStatus(400);
             return;
         } else if (!parameterCode.matches("^(?!.*(.).*\\1)[A-Z]{3}$") ||
-                !parameterFullName.matches("^(?=[a-zA-Z\\s]{1,30}$)(?=(?:.*[A-Z]){1,3})([a-zA-Z\\s]+)$") ||
-                !parameterSign.matches("^[A-Z\\p{Punct}]$")) {
+                !parameterFullName.matches("^(?=[a-zA-Z\\s]{1,30}$)(?=(?:.*[A-Z]){1,3})([a-zA-Z\\s]+)$")) {
             String message = "Переданы неподходящие параметры валюты.";
             out.println(stringMapper.mapFromStringtoJSON(message));
             resp.setStatus(400);
