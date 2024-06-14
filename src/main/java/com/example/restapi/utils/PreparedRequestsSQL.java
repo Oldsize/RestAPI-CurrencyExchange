@@ -34,7 +34,7 @@ public class PreparedRequestsSQL {
     }
 
     private static final String ADD_NEW_EXCHANGE_SQL = """
-            INSERT INTO exchangeRates (BaseCurrencyId, TargetCurrencyId, ExchangeRate) 
+            INSERT INTO exchangeRates (BaseCurrencyId, TargetCurrencyId, Rate) 
             VALUES (?, ?, ?)""";
 
     public String getADD_NEW_EXCHANGE_SQL() {
@@ -74,10 +74,10 @@ public class PreparedRequestsSQL {
     }
 
     private static final String SELECT_EXCHANGE_BY_ID_SQL = """
-            SELECT * FROM exchangeRates
+            SELECT ID, BaseCurrencyId, TargetCurrencyId, Rate FROM exchangeRates
             WHERE ID = ?""";
 
     public String getSELECT_EXCHANGE_BY_ID_SQL() {
-        return getSELECT_CURRENCY_BY_ID_SQL();
+        return getSELECT_EXCHANGE_BY_ID_SQL();
     }
 }
