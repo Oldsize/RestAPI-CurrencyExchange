@@ -63,4 +63,21 @@ public class PreparedRequestsSQL {
     public String getSELECT_ALL_CURRENCIES_SQL() {
         return SELECT_ALL_CURRENCIES_SQL;
     }
+
+    private static final String UPDATE_RATE_SQL = """
+            UPDATE exchangeRates
+            SET Rate = ?
+            WHERE ID = ?;""";
+
+    public String getUPDATE_RATE_SQL() {
+        return UPDATE_RATE_SQL;
+    }
+
+    private static final String SELECT_EXCHANGE_BY_ID_SQL = """
+            SELECT * FROM exchangeRates
+            WHERE ID = ?""";
+
+    public String getSELECT_EXCHANGE_BY_ID_SQL() {
+        return getSELECT_CURRENCY_BY_ID_SQL();
+    }
 }
