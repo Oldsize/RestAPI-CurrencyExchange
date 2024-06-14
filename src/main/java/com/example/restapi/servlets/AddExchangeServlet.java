@@ -30,7 +30,7 @@ public class AddExchangeServlet extends HttpServlet {
         if (baseCurrencyCode == null || targetCurrencyCode == null || rate == null) {
             String message = "Недостаток аргументов.";
             out.print(stringMapper.mapFromStringtoJSON(message));
-            response.setStatus(404);
+            response.setStatus(400);
         }
         ExchangeRate exchangeRate = currencyExchangeDAO.addExchangeQuery(baseCurrencyCode, targetCurrencyCode, rate);
         out.print(exchangeMapper.mapFromModeltoJSON(exchangeRate));
