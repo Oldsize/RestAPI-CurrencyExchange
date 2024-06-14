@@ -6,6 +6,7 @@ import com.example.restapi.model.Currency;
 import com.example.restapi.model.ExchangeRate;
 import com.example.restapi.utils.ConnectionManager;
 import com.example.restapi.utils.PreparedRequestsSQL;
+
 import java.sql.*;
 import java.util.function.Consumer;
 
@@ -51,9 +52,9 @@ public class CurrencyExchangeDAO {
         String targetCurrencyId = currencyDAO.getCurrencyIdByCodeQuery(targetCurrencyCode);
         if (!baseCurrencyCode.matches("^[a-zA-Z]{3}$") || !targetCurrencyCode.matches("^[a-zA-Z]{3}$"))
             throw new IllegalArgumentException();
-         else if (!rate.matches("^\\d{1,3}\\.\\d{3,4}$"))
+        else if (!rate.matches("^\\d{1,3}\\.\\d{3,4}$"))
             throw new IllegalArgumentException();
-         else {
+        else {
             try (Connection connection = connectionManager.getConnection();
                  PreparedStatement preparedStatement = connection.prepareStatement(preparedRequestsSQL.getADD_NEW_EXCHANGE_SQL())) {
                 preparedStatement.setString(1, baseCurrencyId);
@@ -98,11 +99,47 @@ public class CurrencyExchangeDAO {
         }
     }
 
+    public ExchangeRate getExchangeByIdQuery(String id) throws SQLException, DatabaseNotFoundException, DAOException {
+        if (id == null)
+            return null;
+
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(preparedRequestsSQL.getSELECT_EXCHANGE_BY_ID_SQL())) {
+            preparedStatement.setString(1, id);
+            ResultSet exchange = preparedStatement.executeQuery();
+            ExchangeRate exchangeRate = new ExchangeRate();
+            exchangeRate.setId(exchange.getLong("ID"));
+            exchangeRate.setRate(exchange.getBigDecimal("Rate"));
+            String baseCurrencyId = exchange.getString("BaseCurrencyId");
+            String targetCurrencyId = exchange.getString("TargetCurrencyId");
+            Currency baseCurrency = currencyDAO.getCurrencyByIdQuery(baseCurrencyId);
+            Currency targetCurrency = currencyDAO.getCurrencyByIdQuery(targetCurrencyId);
+            exchangeRate.setBaseCurrency(baseCurrency);
+            exchangeRate.setTargetCurrency(targetCurrency);
+            return exchangeRate;
+        }
+    }
+
     public void getAllExchangesQuery(Consumer<ResultSet> consumer) throws DAOException, SQLException, DatabaseNotFoundException {
         try (Connection connection = connectionManager.getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(preparedRequestsSQL.getSELECT_ALL_EXCHANGES_SQL())) {
             consumer.accept(resultSet);
+        }
+    }
+
+    public ExchangeRate updateExchangeRateQuery(String id, String rate) throws SQLException, DatabaseNotFoundException, DAOException {
+        if (id == null || rate == null)
+            return null;
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(preparedRequestsSQL.getUPDATE_RATE_SQL())) {
+            preparedStatement.setString(1, rate);
+            preparedStatement.setString(2, id);
+            preparedStatement.executeQuery();
+            ExchangeRate exchangeRate = getExchangeByIdQuery(id);
+            if (exchangeRate == null)
+                return null;
+            return exchangeRate;
         }
     }
 }
