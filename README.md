@@ -7,7 +7,7 @@
 
 | OOP | Design Patterns | MVC |
 | --- | --------------- | --- |
-| ![OOP](https://upload.wikimedia.org/wikipedia/commons/6/60/Object-oriented_programming_in_Smalltalk_Screenshot.png) | ![Design Patterns](https://sourcemaking.com/design_patterns/design_patterns.jpg) | ![MVC](https://miro.medium.com/v2/resize:fit:720/format:webp/1*BoLugB-Vz10mz3BX4Qse9w.png) |
+| ![OOP](https://www.freecodecamp.org/news/content/images/2020/05/oop.png) | ![Design Patterns](https://refactoring.guru/images/patterns/landing/gang-of-four.png) | ![MVC](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg) |
 
 | SQL | SQLite | JDBC |
 | --- | ------ | ---- |
@@ -15,4 +15,4 @@
 
 | HTTP | Servlets | Apache Tomcat | Maven |
 | ---- | -------- | ------------- | ----- |
-| ![HTTP](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/HTTP_logo.svg/120px-HTTP_logo.svg.png) | ![Servlets](https://upload.wikimedia.org/wikipedia/commons/8/8e/Java_servlet_logo.png) | ![Apache Tomcat](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Apache_Tomcat_logo.svg/120px-Apache_Tomcat_logo.svg.png) | ![Maven](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/120px-Apache_Maven_logo.svg.png) |
+| ![HTTP](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/HTTP_logo.svg/120px-HTTP_logo.svg.png) | ![Servlets](https://static.javatpoint.com/images/servlet-tutorial.png) | ![Apache Tomcat](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Apache_Tomcat_logo.svg/120px-Apache_Tomcat_logo.svg.png) | ![Maven](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/120px-Apache_Maven_logo.svg.png) |
