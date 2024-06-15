@@ -1,7 +1,7 @@
 # Rest-API Обменник Валют
 ![dengi-valiuta-kupiura-2](https://github.com/Oldsize/RestAPI-CurrencyExchange/assets/164073469/8cdfafc7-b109-4452-a299-59935c536c79)
 
-Реализация 3-его проекта [RoadMap'a](https://zhukovsd.github.io/java-backend-learning-course/) от [Сергея Жукова](https://www.youtube.com/@zhukovsd_it_mentor)
+Этот репозиторий - Реализация 3-его проекта [RoadMap'a](https://zhukovsd.github.io/java-backend-learning-course/) от [Сергея Жукова](https://www.youtube.com/@zhukovsd_it_mentor)
 
 
 Test: http://87.242.106.245:8080/demo-1.0-SNAPSHOT/ 
