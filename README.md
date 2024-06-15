@@ -7,7 +7,7 @@
 
 | OOP | Design Patterns | MVC |
 | --- | --------------- | --- |
-| ![OOP](https://www.freecodecamp.org/news/content/images/2020/05/oop.png) | ![Design Patterns](https://refactoring.guru/images/patterns/landing/gang-of-four.png) | ![MVC](https://upload.wikimedia.org/wikipedia/commons/a/a0/MVC-Process.svg) |
+| ![OOP](https://www.freecodecamp.org/news/content/images/2020/05/oop.png) | ![Design Patterns](https://refactoring.guru/images/patterns/landing/gang-of-four@2x.png) | ![MVC](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/320px-MVC-Process.svg.png) |
 
 | SQL | SQLite | JDBC |
 | --- | ------ | ---- |
