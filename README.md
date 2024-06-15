@@ -5,9 +5,9 @@
 
 ## Используемые технологии:
 
-| OOP | Design Patterns | MVC |
-| --- | --------------- | --- |
-| ![OOP](https://www.freecodecamp.org/news/content/images/2020/05/oop.png) | ![Design Patterns](https://refactoring.guru/images/patterns/landing/gang-of-four@2x.png) | ![MVC](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/MVC-Process.svg/320px-MVC-Process.svg.png) |
+| OOP |  MVC |
+| --- | --- |
+| ![Object Oriented Programming with Java](https://edukite.org/wp-content/uploads/2018/04/Object-Oriented-Programming-with-Java-I.jpg) | ![MVC Architecture](https://thegeeksarena.com/version/2021/05/MVC.png) |
 
 | SQL | SQLite | JDBC |
 | --- | ------ | ---- |
@@ -15,4 +15,4 @@
 
 | HTTP | Servlets | Apache Tomcat | Maven |
 | ---- | -------- | ------------- | ----- |
-| ![HTTP](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/HTTP_logo.svg/120px-HTTP_logo.svg.png) | ![Servlets](https://static.javatpoint.com/images/servlet-tutorial.png) | ![Apache Tomcat](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Apache_Tomcat_logo.svg/120px-Apache_Tomcat_logo.svg.png) | ![Maven](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/120px-Apache_Maven_logo.svg.png) |
+| ![HTTP](https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/HTTP_logo.svg/120px-HTTP_logo.svg.png) | ![Java EE Logo](https://i0.wp.com/www.nicepng.com/png/detail/854-8546612_java-ee-java-ee-logo-svg.png) | ![Apache Tomcat](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Apache_Tomcat_logo.svg/120px-Apache_Tomcat_logo.svg.png) | ![Maven](https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Apache_Maven_logo.svg/120px-Apache_Maven_logo.svg.png) |
