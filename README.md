@@ -4,11 +4,6 @@
 Этот репозиторий - Реализация 3-его проекта [RoadMap'a](https://zhukovsd.github.io/java-backend-learning-course/) от [Сергея Жукова](https://www.youtube.com/@zhukovsd_it_mentor)
 
 
-Test: http://87.242.106.245:8080/demo-1.0-SNAPSHOT/ 
-
-
-Commands: /currency/* /currencies /exchange/* /exchanges /exchange-amount/* /patch/exchange/* /add/currency/*/ add/exchange/*
-
 
 ## Используемые технологии:
 
